@@ -17,14 +17,14 @@ fn pre_process_selection(selections: Vec<&str>) -> Vec<u32>{
 }
 
 
-fn find_min_game_vec(rgb_selections: Vec<Vec<u32>>) -> u32{
+fn find_max_game_vec(rgb_selections: Vec<Vec<u32>>) -> u32{
     let red_vec: Vec<u32> = rgb_selections.iter().map(|voc| voc[0]).collect();
-    let min_red: u32 = red_vec.iter().cloned().max().unwrap();
+    let max_red: u32 = red_vec.iter().cloned().max().unwrap();
     let green_vec: Vec<u32> = rgb_selections.iter().map(|voc| voc[1]).collect();
-    let min_green: u32 = green_vec.iter().cloned().max().unwrap();
+    let max_green: u32 = green_vec.iter().cloned().max().unwrap();
     let blue_vec: Vec<u32> = rgb_selections.iter().map(|voc| voc[2]).collect();
-    let min_blue: u32 = blue_vec.iter().cloned().max().unwrap();
-    min_red * min_blue * min_green
+    let max_blue: u32 = blue_vec.iter().cloned().max().unwrap();
+    max_red * max_blue * max_green
 
 
 }
@@ -37,7 +37,7 @@ fn find_power_for_game(game: &str) -> u32{
         rgb_selections.push(pre_process_selection(select_vec))
     }
 
-    return find_min_game_vec(rgb_selections);
+    return find_max_game_vec(rgb_selections);
 
     
 }
